@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdrinkfactory.a CMakeFiles/drinkfactory.dir/drinkfactory.cpp.o
+/usr/bin/ranlib libdrinkfactory.a

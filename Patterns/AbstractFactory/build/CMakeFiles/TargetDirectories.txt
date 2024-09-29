@@ -1,0 +1,9 @@
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/CMakeFiles/rebuild_cache.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/CMakeFiles/edit_cache.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/CMakeFiles/main.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/CMakeFiles/main2.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/hotdrinkfactory/CMakeFiles/rebuild_cache.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/hotdrinkfactory/CMakeFiles/drinkfactory.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/hotdrinkfactory/CMakeFiles/hotdrinkfactory.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/hotdrinkfactory/CMakeFiles/edit_cache.dir
+/home/osboxes/Projects/cpp/Patterns/AbstractFactory/build/hotdrinkfactory/CMakeFiles/hotdrink.dir

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhotdrinkfactory.a CMakeFiles/hotdrinkfactory.dir/hotdrinkfactory.cpp.o
+/usr/bin/ranlib libhotdrinkfactory.a
