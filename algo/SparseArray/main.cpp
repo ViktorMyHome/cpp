@@ -2,14 +2,13 @@
 #include <assert.h>
 
 
-class Node{
-public:
+struct Node{
     int data{};
+    int index{};
     Node* next{};
     Node* prev{};
 
-    Node(int val){
-        data = val;
+    Node(int val, int index) : data(val), index(index){
         next = nullptr;
         prev = nullptr;
     }
@@ -39,14 +38,27 @@ public:
     }
 };
 
-class LinkedList{
+class ArrayLinkedList{
 public:
     Node *head{};
     Node *tail{};
-    LinkedList(){
+    int length = 0; // total number of nodes
+    int array_length {};  //total number of array elements
+
+    void link(Node* first, Node* second) {
+        if(first)
+            first->next = second;
+        if(second)
+            second->prev = first;
+    }
+
+    ArrayLinkedList(){
         Node *head = nullptr;
         Node* tail = nullptr;
     }
+
+
+
     void AddNode(int data){
         Node* node = new Node(data);
         Node* temp;
@@ -95,11 +107,19 @@ public:
         }
     }
 
-    void embed_after(Node* node_before, int value){
-        Node* middle = new Node(value);
+    Node* embed_after(Node* node_before, int value, int index){
+        Node* middle = new Node(value, index);
+        ++length;
+
         Node* node_after = node_before->next;
         link(node_before, middle);
-        link(middle, node_before);
+
+        if(!node_after)
+            tail = middle;
+        else
+            link(middle, node_after);
+
+        return middle;
     }
 
     void reverse(){
@@ -136,7 +156,7 @@ public:
         }
     }
 
-    void merge(LinkedList* list){
+    void merge(ArrayLinkedList* list){
         Node* ptr = head;
         Node* ptr2 = list->head;
         Node* curr;

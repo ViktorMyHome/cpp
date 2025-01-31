@@ -10,6 +10,7 @@ public:
     Node* next;
 
     Node(int data): data(data) {}
+
     void print(Node* head){
         while(head!=nullptr){
             std::cout<<head->data<<std::endl;
@@ -59,6 +60,14 @@ public:
             //printf("next data = %d\n", tmp->data);
         }
     }
+    LinkedList(LinkedList& list){
+        LinkedList *myList = new LinkedList();
+        Node* temp;
+        for(temp=list.head; temp!=nullptr; temp=temp->next){
+            myList->AddNode(temp->data);
+        }
+    }
+
     void insert_front(int value){
         Node* node = new Node(value);
         node->next = head;
@@ -290,6 +299,116 @@ public:
             i++;
         }
     }
+
+    void arrange_even_odd_nodes(){
+        Node* even;//0,2,4
+        Node* odd;//1,3,5
+        Node* first_odd;
+        even = head;
+        odd = head->next;
+        first_odd = odd;
+
+        while(even->next!=nullptr && odd->next!=nullptr && even->next->next!=nullptr && odd->next->next!=nullptr){
+            even->next = even->next->next;
+            even = even->next;
+            odd->next = odd->next->next;
+            odd = odd->next;
+        }
+        if(even->next!=nullptr)
+        if(even->next->next!=nullptr){
+            even->next = even->next->next;
+            even = even->next;
+        }
+        if(odd->next!=nullptr)
+        if(odd->next->next!=nullptr){
+            odd->next = odd->next->next;
+            odd = odd->next;
+        }
+        even->next = first_odd;
+        tail = odd;
+        odd->next = nullptr;
+    }
+
+    void adding_two_huge_numbers(LinkedList& list2){
+        int next = 0;
+        Node* ptr1;
+        Node* ptr2;
+        int val;
+
+        int len1 = 0;
+        ptr1 = head;
+        while(ptr1->next!=nullptr){
+            ptr1 = ptr1->next;
+            len1++;
+        }
+        len1++;
+        //std::cout<<"len1 = "<<len1<<std::endl;
+        int len2 = 0;
+        ptr2 = list2.head;
+        while(ptr2->next!=nullptr){
+            ptr2 = ptr2->next;
+            len2++;
+        }
+        len2++;
+        //std::cout<<"len2 = "<<len2<<std::endl;
+        if(len1>len2)
+        for(ptr1 = head, ptr2 = list2.head; ptr1->next!=nullptr; ptr1=ptr1->next){
+            if(len1 && len2){
+                val = ptr1->data + ptr2->data + next;
+                if(val>9){
+                    next=1;
+                    val=val%10;
+                } else {
+                    next=0;
+                }
+                ptr1->data = val;
+            } else if(len1 && !len2){
+                val = ptr1->data + next;
+                ptr1->data = val;
+                next = 0;
+            } else if(!len1 && len2){
+                val = ptr2->data + next;
+                ptr2->data = val;
+                next = 0;
+            }
+        
+            if(len1)
+                len1--;
+            if(len2){
+                ptr2 = ptr2->next;
+                len2--;
+            }
+        }
+        else {
+            for(ptr1 = head, ptr2 = list2.head; ptr2->next!=nullptr; ptr2=ptr2->next){
+            if(len1 && len2){
+                val = ptr1->data + ptr2->data + next;
+                if(val>9){
+                    next=1;
+                    val=val%10;
+                } else {
+                    next=0;
+                }
+                ptr1->data = val;
+            } else if(len1 && !len2){
+                val = ptr1->data + next;
+                ptr1->data = val;
+                next = 0;
+            } else if(!len1 && len2){
+                val = ptr2->data + next;
+                ptr2->data = val;
+                next = 0;
+            }
+        
+            if(len1){
+                len1--;
+                ptr1 = ptr1->next;
+            }
+            if(len2)
+                len2--;
+        }
+        }
+    }
 };
 
 
@@ -327,10 +446,36 @@ int main(){
 
 //    list.swap_pairs();
     list.print(list.head);
-    std::cout<<std::endl;
+    std::cout<<std::endl<<std::endl;
 //    list.delete_even_position();
-    list.remove_duplicated();
-    list.print(list.head);
+//    list.remove_duplicated();// not debugged
+//    list.print(list.head);
+
+
+    LinkedList list2;
+    list2.AddNode(0);
+    list2.AddNode(1);
+    list2.AddNode(2);
+    list2.AddNode(3);
+    list2.AddNode(4);
+    list2.AddNode(5);
+    list2.AddNode(6);
+    list2.AddNode(7);
+    list2.arrange_even_odd_nodes();
+    list2.print(list2.head);
+    std::cout<<std::endl<<std::endl;
+    LinkedList list3;
+    list3.AddNode(1);
+    list3.AddNode(2);
+    list3.AddNode(3);
+    list3.AddNode(8);
+    std::cout<<std::endl<<std::endl;
+    list2.adding_two_huge_numbers(list3);
+    list2.print(list2.head);
+
+
+
+
 
 return 0;
 }
