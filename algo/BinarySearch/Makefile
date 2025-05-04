@@ -1,10 +1,10 @@
-CXXFLAGS = -std=c++11
+CXXFLAGS = -std=c++17
 CXXFLAGS += -g
 CXXFLAGS += -c
 CXXFLAGS += -fno-elide-constructors
 
 all: main.o
-	g++ main.o -lpthread -o main
+	g++ main.o -o main
 
 main.o:
 	g++ $(CXXFLAGS) main.cpp

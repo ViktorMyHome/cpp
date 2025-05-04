@@ -126,7 +126,6 @@ int quantity_of_anagrams(const string& str){
     cout<<endl;
 
     int count=0;
-    //unordered_set<string> s3 = {"dabb", "bb", "d", "abbaaa", "ab", "bbaaa", "aa", "abb", "dabbaa", "aaa", "a", "baa", "da", "bbaa", "dabbaaa", "abbaa", "dabba", "ba"};
     it2 = s2.begin();
     for(it1 = s1.begin(); it1!=s1.end(); ++it1){
         cout<<*it1<<" ";

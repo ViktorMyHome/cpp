@@ -35,10 +35,15 @@ void Download2() {
 //g++ main.cpp -o main -lpthread
 int main() {
     std::cout<<"Start"<<std::endl;
-    std::thread thDownloader1(Download1);
+    std::thread t1;
+    std::cout<<" joinable "<<t1.joinable()<<std::endl;
+    t1 = std::thread{Download1};
+    std::cout<<" joinable "<<t1.joinable()<<std::endl;
+    //std::thread thDownloader1(Download1);
     std::thread thDownloader2(Download2);
     auto id = thDownloader2.get_id();
-    thDownloader1.join();
+
+    t1.join();
     thDownloader2.join();
 
     std::cout<<id<<std::endl;

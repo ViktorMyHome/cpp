@@ -4,7 +4,7 @@ CXXFLAGS += -c
 CXXFLAGS += -fno-elide-constructors
 
 all: main.o
-	g++ main.o -lpthread -o main
+	g++ main.o -o main
 
 main.o:
 	g++ $(CXXFLAGS) main.cpp
