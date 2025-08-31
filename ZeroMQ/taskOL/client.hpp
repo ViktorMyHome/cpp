@@ -1,10 +1,3 @@
-// #include <fstream>
-// #include <iostream>
-// #include <string>
-// #include <atomic>
-// #include <mutex>
-// #include <assert.h>
-// #include "zmq.h"
 #include "data.hpp"
 #include <set>
 using namespace std;
