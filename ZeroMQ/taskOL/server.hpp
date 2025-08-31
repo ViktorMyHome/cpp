@@ -3,11 +3,6 @@ using namespace std;
 
 #define MAX_QUANTITY_OF_CLIENTS 100
 
-
-// to set port number "server_config.txt" file has to be present
-// in current directory with port number for example:
-// 8080
-
 mutex mtx_sr;
 data_to_server_thread g_dts[MAX_QUANTITY_OF_CLIENTS];
 int thr = 0;
@@ -42,7 +37,6 @@ class server{
             {
             lock_guard<mutex> lock(mtx_sr);
             zmq_msg_t reply_msg;
-            //printf(" thr=%d g_dts[thr].value = %f",j,g_dts[j].X_);
             int rc = zmq_msg_init_size(&reply_msg, sizeof(double)); assert(rc == 0);
             zmq_msg_set_routing_id(&reply_msg, g_dts[j].routing_id_);
             double value = generate_value(g_dts[j].X_);
